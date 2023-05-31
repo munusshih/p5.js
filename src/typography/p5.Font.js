@@ -240,8 +240,8 @@ p5.Font = class {
 
     function isSpace(i, text, glyphsLine) {
       return (
-        (glyphs[i].name && glyphs[i].name === 'space') ||
-        (txt.length === glyphs.length && txt[i] === ' ') //||
+        (glyphsLine[i].name && glyphsLine[i].name === 'space') ||
+        (text.length === glyphsLine.length && text[i] === ' ') //||
         //(glyphs[i].index && glyphs[i].index === 3)
       );
     }
@@ -250,21 +250,22 @@ p5.Font = class {
       let xoff = 0;
       x = xOriginal;
       let line = lines[i];
+
       line = line.replace('\t', '  ');
       const glyphs = this._getGlyphs(line);
 
       for (let j = 0; j < glyphs.length; j++) {
-        if (!isSpace(i)) {
+        if (!isSpace(j, line, glyphs)) {
           // fix to #1817, #2069
 
-          const gpath = glyphs[i].getPath(x, y, fontSize),
+          const gpath = glyphs[j].getPath(x, y, fontSize),
             paths = splitPaths(gpath.commands);
 
           for (let k = 0; k < paths.length; k++) {
             const pts = pathToPoints(paths[k], options);
 
             for (let l = 0; l < pts.length; l++) {
-              pts[k].x += xoff;
+              pts[l].x += xoff;
               result.push(pts[l]);
             }
           }
