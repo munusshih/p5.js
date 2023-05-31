@@ -3,7 +3,7 @@
 node_modules/*
 experiments/*
 lib_old/*
-lib/p5.*
+# lib/p5.*
 lib/modules
 docs/reference/*
 !*.gitkeep
