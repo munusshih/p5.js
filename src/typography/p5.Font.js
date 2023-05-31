@@ -274,7 +274,7 @@ p5.Font = class {
         xoff += glyphs[j].advanceWidth * this._scale(fontSize);
       }
 
-      y = y + fontSize;
+      y = y + this.parent._renderer._textLeading;
     }
 
     return result;
