@@ -213,13 +213,19 @@ p5.prototype.textStyle = function(theStyle) {
  * </code>
  * </div>
  */
-p5.prototype.textWidth = function(...args) {
+p5.prototype.textWidth = function (...args) {
   args[0] += '';
   p5._validateParameters('textWidth', args);
   if (args[0].length === 0) {
     return 0;
   }
-  return this._renderer.textWidth(...args);
+  //   replace choose the max lengthed text
+  const seperateArr = args[0].split(/\r?\n|\r|\n/g);
+
+  //   replace choose the max lengthed text & replace the tab
+  const longest = seperateArr.reduce((a, b) => (a.length > b.length ? a : b), '').replace(/\t/g, '  ');
+
+  return this._renderer.textWidth(longest);
 };
 
 /**
