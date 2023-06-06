@@ -189,7 +189,7 @@ p5.prototype.textStyle = function(theStyle) {
 };
 
 /**
- * Calculates and returns the width of any character or text string.
+ * Calculates and returns the width of any character or the maximum width of any paragrph.
  *
  * @method textWidth
  * @param {String} theText the String of characters to measure
@@ -210,6 +210,20 @@ p5.prototype.textStyle = function(theStyle) {
  * line(sWidth, 50, sWidth, 100);
  *
  * describe('Letter P and p5.js are displayed with vertical lines at end.');
+ * </code>
+ * </div>
+ *
+ *
+ * <div>
+ * <code>
+ * textSize(28);
+ *
+ * let aChar = 'text\nWidth()';
+ * let cWidth = textWidth(aChar);
+ * text(aChar, 0, 40);
+ * line(cWidth, 0, cWidth, 50);
+ *
+ * describe('Text text and Width() are displayed with vertical lines at end of Width().');
  * </code>
  * </div>
  */
