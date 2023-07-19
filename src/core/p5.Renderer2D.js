@@ -27,6 +27,7 @@ p5.Renderer2D.prototype._applyDefaults = function() {
   this._setStroke(constants._DEFAULT_STROKE);
   this.drawingContext.lineCap = constants.ROUND;
   this.drawingContext.font = 'normal 12px sans-serif';
+  this.drawingContext.miterLimit = 1;
 };
 
 p5.Renderer2D.prototype.resize = function(w, h) {
@@ -1092,6 +1093,10 @@ p5.Renderer2D.prototype._setStroke = function(strokeStyle) {
     this.drawingContext.strokeStyle = strokeStyle;
     this._cachedStrokeStyle = strokeStyle;
   }
+};
+
+p5.Renderer2D.prototype.miterLimit = function (limit) {
+  this.drawingContext.miterLimit = limit;
 };
 
 //////////////////////////////////////////////
