@@ -382,4 +382,45 @@ p5.prototype.strokeWeight = function(w) {
   return this;
 };
 
+/**
+ * A number specifying the miter limit ratio, in relation to the stroke width.
+ *
+ * @method miterLimit
+ * @param  {Number} limit the weight of the stroke (in pixels)
+ * @chainable
+ * @example
+ * <div>
+ * <code>
+ * // Example of different stroke weights
+ * strokeWeight(1); // Default
+ * line(20, 20, 80, 20);
+ * strokeWeight(4); // Thicker
+ * line(20, 40, 80, 40);
+ * strokeWeight(10); // Beastly
+ * line(20, 70, 80, 70);
+ * </code>
+ * </div>
+ *
+ * <div>
+ * <code>
+ * //Example of stroke weights
+ * //after transformations
+ * strokeWeight(1); // Default
+ * line(20, 20, 80, 20);
+ * scale(5); // Adding scale transformation
+ * strokeWeight(1); // Resulting strokeweight is 5
+ * line(4, 8, 16, 8); // Coordinates adjusted for scaling
+ * </code>
+ * </div>
+ *
+ * @alt
+ * 3 horizontal black lines. Top line: thin, mid: medium, bottom:thick.
+ * 2 horizontal black line. Top line: thin, botton line: 5 times thicker than top
+ */
+p5.prototype.miterLimit = function(l) {
+  p5._validateParameters('miterLimit', arguments);
+  this._renderer.miterLimit(l);
+  return this;
+};
+
 export default p5;
